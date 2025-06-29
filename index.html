@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grafentix Portfolio</title>
+  <style>
+    * {margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; scroll-behavior: smooth;}
+    body {background: #0a0f4a; color: #fff; overflow-x: hidden;}
+
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    .hero::before {
+      content: '';
+      background: url('https://via.placeholder.com/350x350/00bfff/ffffff?text=Brush') no-repeat;
+      position: absolute;
+      top: 0; left: 0;
+      width: 350px; height: 350px;
+      animation: floatImage 5s ease-in-out infinite;
+      opacity: 0.2;
+    }
+
+    @keyframes floatImage {
+      0% {transform: translateY(0);}
+      50% {transform: translateY(20px);}
+      100% {transform: translateY(0);}
+    }
+
+    .hero img {
+      width: 130px;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      font-size: 26px;
+      margin-bottom: 25px;
+      color: #00bfff;
+      font-weight: 600;
+      min-height: 30px;
+    }
+
+    .btn {
+      padding: 14px 34px;
+      background: #00bfff;
+      color: #fff;
+      text-decoration: none;
+      transition: 0.3s;
+      display: inline-block;
+      border-radius: 30px;
+    }
+    .btn:hover {background: #0083cc;}
+
+    .portfolio {
+      padding: 80px 20px;
+      background: #0a0f4a;
+      text-align: center;
+    }
+    .portfolio h2 {
+      font-size: 36px;
+      margin-bottom: 30px;
+    }
+
+    .services-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 50px;
+    }
+    .service-box {
+      background: #111;
+      color: #fff;
+      padding: 14px 20px;
+      font-size: 14px;
+      text-decoration: none;
+      transition: 0.3s;
+      border-radius: 30px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      min-width: 160px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .service-box:hover {
+      background: #00bfff;
+      transform: scale(1.05);
+    }
+
+    .categories {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+    .circle {
+      background: #111;
+      color: #fff;
+      border-radius: 50%;
+      width: 160px;
+      height: 160px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+      transition: 0.4s;
+    }
+    .circle:hover {
+      background: #00bfff;
+      transform: scale(1.08);
+    }
+    .circle h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+    .circle p {
+      font-size: 12px;
+      color: #ddd;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero">
+    <img src="imagefolder/logo.png" alt="Website Logo">
+    <h1>Design Beyond Imagination</h1>
+    <p id="typewriter"></p>
+    <a href="#portfolio" class="btn">View My Work</a>
+  </div>
+
+  <div id="portfolio" class="portfolio">
+    <h2>Our Services</h2>
+    <div class="services-list">
+      <a href="#logo" class="service-box">Logo Design</a>
+      <a href="#social" class="service-box">Social Media Post</a>
+      <a href="#thumb" class="service-box">Thumbnail</a>
+      <a href="#overlay" class="service-box">Overlay Design</a>
+      <a href="#card" class="service-box">Business Card</a>
+      <a href="#banner" class="service-box">Website Banner</a>
+    </div>
+
+    <h2>Portfolio</h2>
+    <div class="categories">
+      <a href="logo.html" class="circle">
+        <h3>Logo Design</h3>
+        <p>Creative Logo</p>
+      </a>
+      <a href="social.html" class="circle">
+        <h3>Social Post</h3>
+        <p>Social Graphics</p>
+      </a>
+      <a href="thumb.html" class="circle">
+        <h3>Thumbnail</h3>
+        <p>YouTube Thumbs</p>
+      </a>
+      <a href="overlay.html" class="circle">
+        <h3>Overlay Design</h3>
+        <p>Stream Layout</p>
+      </a>
+      <a href="business.html" class="circle">
+        <h3>Business Card</h3>
+        <p>Visiting Cards</p>
+      </a>
+      <a href="banner.html" class="circle">
+        <h3>Banner Design</h3>
+        <p>Website Banners</p>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    const texts = ['Your Vision', 'Our Illustration', 'Pixel Perfect Work'];
+    let count = 0;
+    let index = 0;
+    let currentText = '';
+    let isDeleting = false;
+    const typewriter = document.getElementById('typewriter');
+
+    function type() {
+      if (count === texts.length) count = 0;
+      currentText = texts[count];
+      if (isDeleting) {
+        typewriter.textContent = currentText.substring(0, index--);
+      } else {
+        typewriter.textContent = currentText.substring(0, index++);
+      }
+      let speed = isDeleting ? 50 : 120;
+      if (!isDeleting && index === currentText.length) {
+        speed = 1500;
+        isDeleting = true;
+      } else if (isDeleting && index === 0) {
+        isDeleting = false;
+        count++;
+        speed = 500;
+      }
+      setTimeout(type, speed);
+    }
+    type();
+  </script>
+
+</body>
+</html>
